@@ -53,17 +53,9 @@ dependencies {
 
     implementation ("com.squareup.okhttp3:okhttp:4.9.1")
 
-    // retrofit2 & okhttp3
-    implementation ("com.squareup.retrofit2:retrofit:2.8.1")
-    implementation ("com.squareup.retrofit2:converter-gson:2.8.1")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.8.1")
-    implementation ("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
-
     implementation ("com.google.code.gson:gson:2.9.1")
-//    implementation ("com.squareup.retrofit2:converter-jackson:2.9.0")
-//    implementation ("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
 
-
+    implementation("androidx.fragment:fragment-ktx:1.7.1")
 
     implementation ("com.android.volley:volley:1.2.1")
 }

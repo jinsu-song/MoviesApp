@@ -9,4 +9,13 @@ object API_PATHs {
 
     val getMovieIDs : String = "3/movie/changes?page=1"
 
+    // Query the API configuration details.
+    val CONFIGURATION : String = "3/configuration"
+
+    fun MOVIE_LIST(type: String, page: String) : String = "3/movie/${type}?language=en-US&page=${page}"
+
+    fun makeUrl(endpoint: String) : String{
+        return "${BASE_URL}${endpoint}"
+    }
+
 }
