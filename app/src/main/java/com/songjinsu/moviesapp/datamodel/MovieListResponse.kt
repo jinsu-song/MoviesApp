@@ -35,6 +35,17 @@ data class MovieListResponse2(
     val totalResults: Int?
 ) : MovieListResponse()
 
+data class MovieSearch(
+    @SerializedName("page")
+    val page: Int?,
+    @SerializedName("results")
+    val results: List<Result?>?,
+    @SerializedName("total_pages")
+    val totalPages: Int?,
+    @SerializedName("total_results")
+    val totalResults: Int?
+)
+
 data class Dates(
     @SerializedName("maximum")
     val maximum: String?,

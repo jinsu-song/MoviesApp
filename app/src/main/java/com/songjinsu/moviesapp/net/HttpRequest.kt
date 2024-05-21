@@ -1,23 +1,24 @@
 package com.songjinsu.moviesapp.net
 
 import android.content.Context
+import com.android.volley.Request.Method
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.Volley
-import com.android.volley.Response
 
 object HttpRequest {
-    fun <T> request(url: String, clazz: Class<T>, context: Context, success: CallbackSuccess<T>, failure: CallbackFailure) {
+    fun <T> requestGet(url: String, clazz: Class<T>, context: Context, success: CallbackSuccess<T>, failure: CallbackFailure) {
         val queue = Volley.newRequestQueue(context)
 
         val request = GsonRequest(
             url,
+            Method.GET,
             clazz,
-            Response.Listener {response ->
+            { response ->
                 response
                 val response = response as? T
                 success.onSuccess(response)
             },
-            Response.ErrorListener {error ->
+            { error ->
                 failure.onFailure(error)
             }
         )

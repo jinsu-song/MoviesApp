@@ -10,10 +10,11 @@ import java.io.UnsupportedEncodingException
 
 class GsonRequest<T>(
     url: String,
+    method: Int,
     private val clazz: Class<T>,
     listener: Response.Listener<T>,
     errorListener: Response.ErrorListener
-) : JsonRequest<T>(Request.Method.GET, url, null, listener, errorListener) {
+) : JsonRequest<T>(method, url, null, listener, errorListener) {
 
     private val gson = Gson()
 

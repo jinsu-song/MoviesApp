@@ -17,8 +17,8 @@ object App : Application() {
 
     fun getConfiguration(context: Context, success: () -> Unit) {
         val methodName : String = "getConfiguration()"
-        call.request(
-            API_PATHs.makeUrl(API_PATHs.CONFIGURATION),
+        call.requestGet(
+            API_PATHs.makeFullUrl(API_PATHs.CONFIGURATION),
             ConfigurationResponse::class.java,
             context,
             { response ->

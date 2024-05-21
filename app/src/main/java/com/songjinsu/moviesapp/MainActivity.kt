@@ -3,6 +3,8 @@ package com.songjinsu.moviesapp
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.android.volley.toolbox.Volley
@@ -19,6 +21,11 @@ import java.io.IOException
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var mainViewModel : MainViewModel
+    private lateinit var mainFragment : MainFragment
+
+    val fm : FragmentManager = supportFragmentManager
+    private val ft : FragmentTransaction = supportFragmentManager.beginTransaction()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,13 +33,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        mainViewModel = MainViewModel(fm)
+
+        mainFragment = MainFragment(mainViewModel)
+
         App.getConfiguration(this) {
-            if (savedInstanceState == null) {
-                supportFragmentManager.commit {
-                    setReorderingAllowed(true)
-                    add<MainFragment>(R.id.fragment_container_view)
-                }
-            }
+            ft.replace(R.id.fragment_container_view, mainFragment).commit()
         }
+
     }
 }
