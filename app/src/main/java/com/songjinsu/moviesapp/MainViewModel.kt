@@ -1,11 +1,13 @@
 package com.songjinsu.moviesapp
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.android.volley.VolleyError
 import com.songjinsu.moviesapp.common.MoviesFilterType
 import com.songjinsu.moviesapp.datamodel.MovieInfo
 import com.songjinsu.moviesapp.datamodel.MovieListResponse

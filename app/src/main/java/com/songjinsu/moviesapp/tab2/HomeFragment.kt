@@ -33,6 +33,7 @@ class HomeFragment(val vm: MainViewModel) : Fragment() {
     }
 
     fun init() {
+        adapter.context = requireContext()
         adapter.setOnItemClick { movieInfo ->
             vm.addFragment(MovieDetailFragment(vm, movieInfo.id.toString()))
         }

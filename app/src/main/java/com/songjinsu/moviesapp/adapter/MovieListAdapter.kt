@@ -1,16 +1,22 @@
 package com.songjinsu.moviesapp.adapter
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.songjinsu.moviesapp.R
+import com.songjinsu.moviesapp.common.App
 import com.songjinsu.moviesapp.databinding.MovieListItemBinding
 import com.songjinsu.moviesapp.datamodel.MovieInfo
+import com.songjinsu.moviesapp.net.HttpRequest
 
 class MovieListAdapter() : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
     private val list = arrayListOf<MovieInfo>()
     private var clickListener: (MovieInfo) -> Unit = {}
+    lateinit var context: Context
 
     fun setList(items: ArrayList<MovieInfo>) {
         this.list.clear()
@@ -36,6 +42,24 @@ class MovieListAdapter() : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
 
         holder.binding.linearlayout.setOnClickListener {
             clickListener(item)
+        }
+
+        if (context != null) {
+            val url = "${App.configuration.images?.baseUrl}w92${item.posterPath}"
+            if (url != null) {
+                HttpRequest.imageLoad(
+                    url,
+                    Bitmap::class.java,
+                    context,
+                    { bitmap ->
+                        if (bitmap != null) {
+                            holder.binding.ivPoster.setImageBitmap(bitmap)
+                        }
+                    }, { error ->
+                        Log.d("EEERRROOOOR", "Error Message >>>>>> : ${error.message}")
+                    }
+                )
+            }
         }
     }
 

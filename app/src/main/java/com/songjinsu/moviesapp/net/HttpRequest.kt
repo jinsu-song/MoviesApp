@@ -1,8 +1,11 @@
 package com.songjinsu.moviesapp.net
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.widget.ImageView
 import com.android.volley.Request.Method
 import com.android.volley.VolleyError
+import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.Volley
 
 object HttpRequest {
@@ -14,7 +17,6 @@ object HttpRequest {
             Method.GET,
             clazz,
             { response ->
-                response
                 val response = response as? T
                 success.onSuccess(response)
             },
@@ -23,6 +25,27 @@ object HttpRequest {
             }
         )
         queue.add(request)
+    }
+
+    // 이미지 로드
+    fun <T> imageLoad(url: String, clazz: Class<T>, context: Context, success: CallbackSuccess<T>, failure: CallbackFailure) {
+        val queue = Volley.newRequestQueue(context)
+
+        val imageRequest = ImageRequest(
+            url,
+            { response ->
+                val res = response as? T
+                success.onSuccess(res)
+            },
+            0,
+            0,
+            ImageView.ScaleType.FIT_XY,
+            Bitmap.Config.RGB_565,
+            { error ->
+                failure.onFailure(error)
+            }
+        )
+        queue.add(imageRequest)
     }
 
     fun interface CallbackSuccess <T> {
