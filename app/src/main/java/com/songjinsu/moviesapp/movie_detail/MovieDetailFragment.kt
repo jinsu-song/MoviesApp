@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.songjinsu.moviesapp.MainViewModel
 import com.songjinsu.moviesapp.databinding.MovieDetailFragmentBinding
 
-class MovieDetailFragment(val vm: MainViewModel) : Fragment() {
+class MovieDetailFragment(val vm: MainViewModel, val movieId: String) : Fragment() {
     private lateinit var binding: MovieDetailFragmentBinding
 
     override fun onCreateView(
@@ -20,11 +20,11 @@ class MovieDetailFragment(val vm: MainViewModel) : Fragment() {
 
         init()
 
-
         return binding.root
     }
 
     fun init() {
+
         binding.btnGoBack.setOnClickListener {
             vm.popFragment()
         }

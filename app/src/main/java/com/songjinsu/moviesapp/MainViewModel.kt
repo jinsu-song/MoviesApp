@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.songjinsu.moviesapp.common.MoviesFilterType
+import com.songjinsu.moviesapp.datamodel.MovieInfo
 import com.songjinsu.moviesapp.datamodel.MovieListResponse
 import com.songjinsu.moviesapp.datamodel.MovieListResponse1
 import com.songjinsu.moviesapp.datamodel.MovieListResponse2
@@ -20,7 +21,7 @@ class MainViewModel(val fm: FragmentManager) : ViewModel() {
 
     private val call = HttpRequest
     private var moviesFilterType: MoviesFilterType = MoviesFilterType.POPULAR
-    val movieListLiveData = MutableLiveData<MovieListResponse>()
+    val movieListLiveData = MutableLiveData<ArrayList<MovieInfo>?>()
     val searchMovieLiveData = MutableLiveData<MovieSearch>()
 
 
@@ -38,7 +39,18 @@ class MainViewModel(val fm: FragmentManager) : ViewModel() {
                 if (response == null) {
                     Toast.makeText(context, "Response is Null at $methodName", Toast.LENGTH_SHORT).show()
                 } else {
-                    movieListLiveData.postValue(response)
+                    var res : MovieListResponse? = null
+
+                    if (isExistDateField()) {
+                        res = response as MovieListResponse1
+                        movieListLiveData.postValue(res.results)
+
+                    } else {
+                        res = response as MovieListResponse2
+                        movieListLiveData.postValue(res.results)
+                    }
+
+
                 }
             }, { error ->
                 Toast.makeText(context, "$methodName >>>> ${error.message}", Toast.LENGTH_SHORT).show()
@@ -66,11 +78,18 @@ class MainViewModel(val fm: FragmentManager) : ViewModel() {
 
     fun addFragment(fragment: Fragment) {
         val tag = fragment::class.java.simpleName
-        val fg = fm.findFragmentByTag(tag)
-        fm.beginTransaction()
-            .add(R.id.fragment_container_view, fragment)
-            .addToBackStack(tag)
-            .commit()
+        val ft = fm.beginTransaction()
+
+        ft.setCustomAnimations(
+            R.anim.slide_in,
+            R.anim.fade_out,
+            R.anim.fade_in,
+            R.anim.slide_out
+        )
+
+        ft.add(R.id.fragment_container_view, fragment)
+        .addToBackStack(tag)
+        .commit()
     }
 
     fun popFragment() {

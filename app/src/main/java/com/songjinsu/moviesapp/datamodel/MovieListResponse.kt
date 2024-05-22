@@ -14,7 +14,7 @@ data class MovieListResponse1(
     @SerializedName("page")
     val page: Int?,
     @SerializedName("results")
-    val results: List<Result?>?,
+    val results: ArrayList<MovieInfo>?,
     @SerializedName("total_pages")
     val totalPages: Int?,
     @SerializedName("total_results")
@@ -28,7 +28,7 @@ data class MovieListResponse2(
     @SerializedName("page")
     val page: Int?,
     @SerializedName("results")
-    val results: List<Result?>?,
+    val results: ArrayList<MovieInfo>?,
     @SerializedName("total_pages")
     val totalPages: Int?,
     @SerializedName("total_results")
@@ -39,7 +39,7 @@ data class MovieSearch(
     @SerializedName("page")
     val page: Int?,
     @SerializedName("results")
-    val results: List<Result?>?,
+    val results: List<MovieInfo?>?,
     @SerializedName("total_pages")
     val totalPages: Int?,
     @SerializedName("total_results")
@@ -53,7 +53,7 @@ data class Dates(
     val minimum: String?
 )
 
-data class Result(
+data class MovieInfo (
     @SerializedName("adult")
     val adult: Boolean?,
     @SerializedName("backdrop_path")
