@@ -14,11 +14,11 @@ import com.songjinsu.moviesapp.datamodel.MovieInfo
 import com.songjinsu.moviesapp.movie_detail.MovieDetailFragment
 
 class HomeFragment(val vm: MainViewModel) : Fragment() {
+
     private lateinit var binding: HomeFragmentBinding
     private var  movieList : ArrayList<MovieInfo>? = arrayListOf()
-    private lateinit var movieDetailFragment : MovieDetailFragment
     private var adapter : MovieListAdapter = MovieListAdapter()
-
+    private val homeViewModel = HomeViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,9 +41,9 @@ class HomeFragment(val vm: MainViewModel) : Fragment() {
         binding.recyclerview.adapter = adapter
 
         // 영화 리스트 불러오기
-        vm.getMovieList(requireContext())
+        homeViewModel.getMovieList(requireContext())
 
-        vm.movieListLiveData.observe(viewLifecycleOwner) {
+        homeViewModel.movieListLiveData.observe(viewLifecycleOwner) {
 
             it.let { movieList = it }
             movieList?.let { it1 -> adapter.setList(it1) }

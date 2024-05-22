@@ -17,7 +17,7 @@ class MainFragment(val vm: MainViewModel) : Fragment() {
 //    lateinit var  movieList : MovieListResponse
     private lateinit var binding : MainFragmentBinding
 
-    val searchFragment = SearchFragment()
+    val searchFragment = SearchFragment(vm)
     val homeFragment = HomeFragment(vm)
     val favoriteFragment = FavoriteFragment()
 

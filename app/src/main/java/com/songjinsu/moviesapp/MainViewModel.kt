@@ -21,63 +21,6 @@ import com.songjinsu.moviesapp.net.Paths
 
 class MainViewModel(val fm: FragmentManager) : ViewModel() {
 
-    private val call = HttpRequest
-    private var moviesFilterType: MoviesFilterType = MoviesFilterType.POPULAR
-    val movieListLiveData = MutableLiveData<ArrayList<MovieInfo>?>()
-    val searchMovieLiveData = MutableLiveData<MovieSearch>()
-
-
-    // 영화 목록 불러오기
-    fun getMovieList(context: Context, moviesFilterType: MoviesFilterType = MoviesFilterType.POPULAR, page: String = "1") {
-        val methodName = "getMovieList()"
-        this.moviesFilterType = moviesFilterType
-        val url = Paths.makeFullUrl(Paths.MOVIE_LIST(moviesFilterType.toString(), page))
-
-        call.requestGet(
-            url,
-            if (isExistDateField()) MovieListResponse1::class.java else MovieListResponse2::class.java,
-            context,
-            { response ->
-                if (response == null) {
-                    Toast.makeText(context, "Response is Null at $methodName", Toast.LENGTH_SHORT).show()
-                } else {
-                    var res : MovieListResponse? = null
-
-                    if (isExistDateField()) {
-                        res = response as MovieListResponse1
-                        movieListLiveData.postValue(res.results)
-
-                    } else {
-                        res = response as MovieListResponse2
-                        movieListLiveData.postValue(res.results)
-                    }
-
-
-                }
-            }, { error ->
-                Toast.makeText(context, "$methodName >>>> ${error.message}", Toast.LENGTH_SHORT).show()
-            }
-        )
-    }
-
-    // 영화 이름으로 검색
-    fun searchMovie(context: Context, movieName: String, page: String = "1") {
-        val methodName = "searchMovie"
-        val url = Paths.makeFullUrl(Paths.SEARCH_MOVIE(movieName, page))
-
-        call.requestGet(
-            url,
-            MovieSearch::class.java,
-            context,
-            { response ->
-                // TODO :
-
-            }, { error ->
-                Toast.makeText(context, "$methodName >>>> ${error.message}", Toast.LENGTH_SHORT).show()
-            }
-        )
-    }
-
     fun addFragment(fragment: Fragment) {
         val tag = fragment::class.java.simpleName
         val ft = fm.beginTransaction()
@@ -96,16 +39,5 @@ class MainViewModel(val fm: FragmentManager) : ViewModel() {
 
     fun popFragment() {
         fm.popBackStack()
-    }
-
-    fun getMoviesFilterType() : MoviesFilterType {
-        return this.moviesFilterType
-    }
-
-    private fun isExistDateField() : Boolean {
-        return when (moviesFilterType) {
-            MoviesFilterType.POPULAR, MoviesFilterType.TOP_RATED -> false
-            MoviesFilterType.NOW_PLAYING, MoviesFilterType.UPCOMING -> true
-        }
     }
 }
