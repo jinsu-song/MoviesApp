@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/framelayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/transparent"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_filter_popular"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:text="인기순"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"/>
+
+            <Button
+                android:id="@+id/btn_filter_average"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:text="평점순"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"/>
+
+            <Button
+                android:id="@+id/btn_filter_new"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:text="신규순"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"/>
+
+            <Button
+                android:id="@+id/btn_filter_favorite"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:text="즐겨찾기"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

@@ -19,6 +19,9 @@ class HomeFragment(val vm: MainViewModel) : Fragment() {
     private var  movieList : ArrayList<MovieInfo>? = arrayListOf()
     private var adapter : MovieListAdapter = MovieListAdapter()
     private val homeViewModel = HomeViewModel()
+    private val filterViewFragment by lazy {
+        FilterViewFragment(vm, homeViewModel)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,6 +51,10 @@ class HomeFragment(val vm: MainViewModel) : Fragment() {
             it.let { movieList = it }
             movieList?.let { it1 -> adapter.setList(it1) }
 
+        }
+
+        binding.btnFilter.setOnClickListener {
+            vm.addFragment(filterViewFragment, slide = 2)
         }
     }
 }

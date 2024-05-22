@@ -21,16 +21,25 @@ import com.songjinsu.moviesapp.net.Paths
 
 class MainViewModel(val fm: FragmentManager) : ViewModel() {
 
-    fun addFragment(fragment: Fragment) {
+    fun addFragment(fragment: Fragment, slide: Int = 1) {
         val tag = fragment::class.java.simpleName
         val ft = fm.beginTransaction()
 
-        ft.setCustomAnimations(
-            R.anim.slide_in,
-            R.anim.fade_out,
-            R.anim.fade_in,
-            R.anim.slide_out
-        )
+        when(slide) {
+            1 -> ft.setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
+            2 -> ft.setCustomAnimations(
+                R.anim.bottom_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.bottom_out
+            )
+        }
+
 
         ft.add(R.id.fragment_container_view, fragment)
         .addToBackStack(tag)

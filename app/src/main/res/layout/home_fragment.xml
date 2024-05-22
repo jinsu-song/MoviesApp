@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:backgroundTint="#42953a"
             android:text="필터" />
         
         <androidx.recyclerview.widget.RecyclerView
