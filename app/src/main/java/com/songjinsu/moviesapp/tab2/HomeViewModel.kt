@@ -1,11 +1,11 @@
 package com.songjinsu.moviesapp.tab2
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.songjinsu.moviesapp.common.MoviesFilterType
-import com.songjinsu.moviesapp.datamodel.MovieInfo
 import com.songjinsu.moviesapp.datamodel.MovieListResponse
 import com.songjinsu.moviesapp.datamodel.MovieListResponse1
 import com.songjinsu.moviesapp.datamodel.MovieListResponse2
@@ -15,7 +15,7 @@ import com.songjinsu.moviesapp.net.Paths
 class HomeViewModel : ViewModel() {
     private val call = HttpRequest
     private var moviesFilterType: MoviesFilterType = MoviesFilterType.POPULAR
-    val movieListLiveData = MutableLiveData<ArrayList<MovieInfo>?>()
+    val moviesInfoLiveData = MutableLiveData<MovieListResponse>()
 
 
     // 영화 목록 불러오기
@@ -36,11 +36,11 @@ class HomeViewModel : ViewModel() {
 
                     if (isExistDateField()) {
                         res = response as MovieListResponse1
-                        movieListLiveData.postValue(res.results)
+                        moviesInfoLiveData.postValue(res!!)
 
                     } else {
                         res = response as MovieListResponse2
-                        movieListLiveData.postValue(res.results)
+                        moviesInfoLiveData.postValue(res!!)
                     }
                 }
             }, { error ->
@@ -49,7 +49,11 @@ class HomeViewModel : ViewModel() {
         )
     }
 
-    private fun isExistDateField() : Boolean {
+    fun getMoviesFilterType() : MoviesFilterType {
+        return moviesFilterType
+    }
+
+    fun isExistDateField() : Boolean {
         return when (moviesFilterType) {
             MoviesFilterType.POPULAR, MoviesFilterType.TOP_RATED -> false
             MoviesFilterType.NOW_PLAYING, MoviesFilterType.UPCOMING -> true

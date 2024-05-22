@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.songjinsu.moviesapp.MainViewModel
 import com.songjinsu.moviesapp.R
 import com.songjinsu.moviesapp.adapter.MovieListAdapter
@@ -40,10 +41,37 @@ class SearchFragment(val vm: MainViewModel) : Fragment() {
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerview.adapter = adapter
 
+        binding.recyclerview.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+            private var isScrolledDown = false
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == RecyclerView.SCROLL_STATE_SETTLING && isScrolledDown) {
+                    val page = searchInfo.page?.plus(1)
+                    val totalPage = searchInfo.totalPages
+                    if (page != null && totalPage != null) {
+                        if (page <= totalPage) {
+                            searchViewModel.getSearchMovies(searchViewModel.movieName, requireContext(), page.toString())
+                        }
+                    }
+                }
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                isScrolledDown = dy > 0
+            }
+        })
+
         searchViewModel.searchInfo.observe(viewLifecycleOwner) {
             searchInfo = it
-            val movieList = searchInfo.results as ArrayList<MovieInfo>
-            adapter.setList(movieList)
+            val movieList  = searchInfo.results as ArrayList<MovieInfo>
+            var currentPage = searchInfo.page?.toInt()
+
+            if (currentPage == 1) {
+                adapter.setList(movieList)
+            } else {
+                adapter.addList(movieList)
+            }
         }
 
         binding.btnSerach.setOnClickListener {
@@ -51,6 +79,7 @@ class SearchFragment(val vm: MainViewModel) : Fragment() {
 
             if (movieName.isNotEmpty()) {
                 searchViewModel.getSearchMovies(movieName, requireContext())
+                searchViewModel.movieName = movieName
             }
         }
     }

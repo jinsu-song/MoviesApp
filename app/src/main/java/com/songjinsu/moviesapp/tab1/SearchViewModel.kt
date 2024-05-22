@@ -11,6 +11,7 @@ import com.songjinsu.moviesapp.net.Paths
 class SearchViewModel : ViewModel() {
     private val call = HttpRequest
     val searchInfo = MutableLiveData<MovieSearch>()
+    var movieName: String = ""
 
     fun getSearchMovies(movieName: String, context: Context, page: String = "1") {
         val methodName = "getSearchMovies"

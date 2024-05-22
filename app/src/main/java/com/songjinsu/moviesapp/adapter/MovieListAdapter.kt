@@ -24,6 +24,14 @@ class MovieListAdapter() : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
+    // 기존의 리스트에 새로 추가될 때만 호출하는 메서드
+    fun addList(items: ArrayList<MovieInfo>) {
+        // 기존의 list에 새로 추가된 데이터의 시작 포지션
+        val addStartPosition = list.size
+        list.addAll(items)
+        notifyItemRangeInserted(addStartPosition, items.size)
+    }
+
     fun setOnItemClick(listener : (MovieInfo) -> Unit) {
         clickListener = listener
     }
@@ -45,21 +53,30 @@ class MovieListAdapter() : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
         }
 
         if (context != null) {
-            val url = "${App.configuration.images?.baseUrl}w92${item.posterPath}"
-            if (url != null) {
-                HttpRequest.imageLoad(
-                    url,
-                    Bitmap::class.java,
-                    context,
-                    { bitmap ->
-                        if (bitmap != null) {
-                            holder.binding.ivPoster.setImageBitmap(bitmap)
+            val baseUrl = App.configuration.images?.baseUrl
+            val url = "${baseUrl}w92${item.posterPath}"
+
+            // TODO : 이미지 캐시 구현해야함.
+            if (list[position].image != null) {
+                holder.binding.ivPoster.setImageBitmap(list[position].image)
+            } else {
+                if (baseUrl != null) {
+                    HttpRequest.imageLoad(
+                        url,
+                        Bitmap::class.java,
+                        context,
+                        { bitmap ->
+                            if (bitmap != null) {
+                                list[position].image = bitmap
+                                holder.binding.ivPoster.setImageBitmap(bitmap)
+                            }
+                        }, { error ->
+                            Log.d("EEERRROOOOR", "Error Message >>>>>> : ${error.message}")
                         }
-                    }, { error ->
-                        Log.d("EEERRROOOOR", "Error Message >>>>>> : ${error.message}")
-                    }
-                )
+                    )
+                }
             }
+
         }
     }
 

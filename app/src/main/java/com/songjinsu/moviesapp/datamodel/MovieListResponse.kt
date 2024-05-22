@@ -1,9 +1,20 @@
 package com.songjinsu.moviesapp.datamodel
 
 
+import android.graphics.Bitmap
 import com.google.gson.annotations.SerializedName
 
-open class MovieListResponse
+open class MovieListResponse {
+    @SerializedName("page")
+    val page: Int? = null
+
+
+
+    @SerializedName("total_pages")
+    val totalPages: Int? = null
+    @SerializedName("total_results")
+    val totalResults: Int? = null
+}
 
 /**
  * For Type : now_playing, upcoming
@@ -11,28 +22,28 @@ open class MovieListResponse
 data class MovieListResponse1(
     @SerializedName("dates")
     val dates: Dates?,
-    @SerializedName("page")
-    val page: Int?,
+//    @SerializedName("page")
+//    val page: Int?,
     @SerializedName("results")
     val results: ArrayList<MovieInfo>?,
-    @SerializedName("total_pages")
-    val totalPages: Int?,
-    @SerializedName("total_results")
-    val totalResults: Int?
+//    @SerializedName("total_pages")
+//    val totalPages: Int?,
+//    @SerializedName("total_results")
+//    val totalResults: Int?
 ) : MovieListResponse()
 
 /**
  * For Type : popular, Top Rated
  */
 data class MovieListResponse2(
-    @SerializedName("page")
-    val page: Int?,
+//    @SerializedName("page")
+//    val page: Int?,
     @SerializedName("results")
     val results: ArrayList<MovieInfo>?,
-    @SerializedName("total_pages")
-    val totalPages: Int?,
-    @SerializedName("total_results")
-    val totalResults: Int?
+//    @SerializedName("total_pages")
+//    val totalPages: Int?,
+//    @SerializedName("total_results")
+//    val totalResults: Int?
 ) : MovieListResponse()
 
 data class MovieSearch(
@@ -81,5 +92,7 @@ data class MovieInfo (
     @SerializedName("vote_average")
     val voteAverage: Double?,
     @SerializedName("vote_count")
-    val voteCount: Int?
+    val voteCount: Int?,
+
+    var image: Bitmap?
 )
