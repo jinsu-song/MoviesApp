@@ -45,6 +45,10 @@ class MovieDetailFragment(val vm: MainViewModel, val movieId: String) : Fragment
 
         clickEvent()
 
+        setObserver()
+    }
+
+    fun setObserver() {
         movieDetailViewModel.movieDetailLiveData.observe(viewLifecycleOwner) {
             movieDetail = it
 

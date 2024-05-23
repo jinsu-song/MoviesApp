@@ -57,7 +57,6 @@ class MovieDetailViewModel : ViewModel() {
 
                 }, { error ->
                     Log.d("Errorrrrr", "Error Message >>>>> : ${error.message}")
-
                 }
             )
         }
