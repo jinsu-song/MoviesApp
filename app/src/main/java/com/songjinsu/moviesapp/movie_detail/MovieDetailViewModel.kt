@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.songjinsu.moviesapp.common.App
 import com.songjinsu.moviesapp.datamodel.MovieDetailResponse
+import com.songjinsu.moviesapp.datamodel.MovieVideos
 import com.songjinsu.moviesapp.net.HttpRequest
 import com.songjinsu.moviesapp.net.Paths
 
@@ -16,6 +17,7 @@ class MovieDetailViewModel : ViewModel() {
     private val call = HttpRequest
     val movieDetailLiveData = MutableLiveData<MovieDetailResponse>()
     val posterLiveData = MutableLiveData<Bitmap>()
+    val movieVideosLiveData = MutableLiveData<MovieVideos>()
 
     // 영화 정보 불러오기
     fun getMovieDetail(movieId: String, context: Context) {
@@ -38,6 +40,7 @@ class MovieDetailViewModel : ViewModel() {
         )
     }
 
+    // poster 이미지 불러오기
     fun loadPoster(imageName: String, context: Context) {
         val baseUrl = App.configuration.images?.baseUrl
         val url = "${baseUrl}w500${imageName}"
@@ -55,6 +58,29 @@ class MovieDetailViewModel : ViewModel() {
                 }, { error ->
                     Log.d("Errorrrrr", "Error Message >>>>> : ${error.message}")
 
+                }
+            )
+        }
+    }
+
+    // 영화에 대한 예고편 불러오기
+    fun getMovieVideos(movieId: String, context: Context) {
+        val methodName = "getMovieVideos"
+        val baseUrl = App.configuration.images?.baseUrl
+        val url = Paths.makeFullUrl(Paths.MOVIE_VIDEOS(movieId))
+        if (baseUrl != null) {
+            call.requestGet(
+                url,
+                MovieVideos::class.java,
+                context,
+                { response ->
+                    if (response == null) {
+                        Toast.makeText(context, "Response is Null at $methodName", Toast.LENGTH_SHORT).show()
+                    } else {
+                        movieVideosLiveData.postValue(response)
+                    }
+                }, { error ->
+                    Log.d("Errorrrrr", "Error Message >>>>> : ${error.message}")
                 }
             )
         }

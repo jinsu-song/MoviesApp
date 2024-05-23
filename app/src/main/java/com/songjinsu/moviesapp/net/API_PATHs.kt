@@ -16,6 +16,8 @@ object API_PATHs {
 
     fun MOVIE_DETAIL(movieId: String) : String = "3/movie/${movieId}?language=en-US"
 
+    fun MOVIE_VIDEOS(movieId: String) : String = "3/movie/${movieId}/videos"
+
     fun makeFullUrl(endpoint: String) : String{
         return "${BASE_URL}${endpoint}"
     }
