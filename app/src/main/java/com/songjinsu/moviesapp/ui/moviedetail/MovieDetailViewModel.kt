@@ -1,4 +1,4 @@
-package com.songjinsu.moviesapp.movie_detail
+package com.songjinsu.moviesapp.ui.moviedetail
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.songjinsu.moviesapp.common.App
-import com.songjinsu.moviesapp.datamodel.MovieDetailResponse
-import com.songjinsu.moviesapp.datamodel.MovieVideos
+import com.songjinsu.moviesapp.ui.datamodel.MovieDetailResponse
+import com.songjinsu.moviesapp.ui.datamodel.MovieVideos
 import com.songjinsu.moviesapp.net.HttpRequest
 import com.songjinsu.moviesapp.net.Paths
 

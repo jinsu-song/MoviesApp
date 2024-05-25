@@ -1,4 +1,4 @@
-package com.songjinsu.moviesapp
+package com.songjinsu.moviesapp.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
+import com.songjinsu.moviesapp.R
 import com.songjinsu.moviesapp.databinding.MainFragmentBinding
-import com.songjinsu.moviesapp.datamodel.MovieListResponse
-import com.songjinsu.moviesapp.tab1.SearchFragment
-import com.songjinsu.moviesapp.tab2.HomeFragment
-import com.songjinsu.moviesapp.tab3.FavoriteFragment
+import com.songjinsu.moviesapp.ui.search.SearchFragment
+import com.songjinsu.moviesapp.ui.home.HomeFragment
+import com.songjinsu.moviesapp.ui.favorite.FavoriteFragment
 
 class MainFragment(val vm: MainViewModel) : Fragment() {
 

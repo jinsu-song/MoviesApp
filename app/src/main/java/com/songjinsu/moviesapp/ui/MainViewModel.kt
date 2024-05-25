@@ -1,23 +1,9 @@
-package com.songjinsu.moviesapp
+package com.songjinsu.moviesapp.ui
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.android.volley.VolleyError
-import com.songjinsu.moviesapp.common.MoviesFilterType
-import com.songjinsu.moviesapp.datamodel.MovieInfo
-import com.songjinsu.moviesapp.datamodel.MovieListResponse
-import com.songjinsu.moviesapp.datamodel.MovieListResponse1
-import com.songjinsu.moviesapp.datamodel.MovieListResponse2
-import com.songjinsu.moviesapp.datamodel.MovieSearch
-import com.songjinsu.moviesapp.movie_detail.MovieDetailFragment
-import com.songjinsu.moviesapp.net.API_PATHs
-import com.songjinsu.moviesapp.net.HttpRequest
-import com.songjinsu.moviesapp.net.Paths
+import com.songjinsu.moviesapp.R
 
 class MainViewModel(val fm: FragmentManager) : ViewModel() {
 

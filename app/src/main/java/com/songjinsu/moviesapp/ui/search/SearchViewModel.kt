@@ -1,10 +1,10 @@
-package com.songjinsu.moviesapp.tab1
+package com.songjinsu.moviesapp.ui.search
 
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.songjinsu.moviesapp.datamodel.MovieSearch
+import com.songjinsu.moviesapp.ui.datamodel.MovieSearch
 import com.songjinsu.moviesapp.net.HttpRequest
 import com.songjinsu.moviesapp.net.Paths
 

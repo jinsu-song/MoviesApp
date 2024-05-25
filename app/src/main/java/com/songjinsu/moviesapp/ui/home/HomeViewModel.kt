@@ -1,14 +1,13 @@
-package com.songjinsu.moviesapp.tab2
+package com.songjinsu.moviesapp.ui.home
 
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.songjinsu.moviesapp.common.MoviesFilterType
-import com.songjinsu.moviesapp.datamodel.MovieListResponse
-import com.songjinsu.moviesapp.datamodel.MovieListResponse1
-import com.songjinsu.moviesapp.datamodel.MovieListResponse2
+import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse
+import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse1
+import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse2
 import com.songjinsu.moviesapp.net.HttpRequest
 import com.songjinsu.moviesapp.net.Paths
 

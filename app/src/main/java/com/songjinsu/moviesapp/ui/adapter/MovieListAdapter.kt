@@ -1,4 +1,4 @@
-package com.songjinsu.moviesapp.adapter
+package com.songjinsu.moviesapp.ui.adapter
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.songjinsu.moviesapp.R
 import com.songjinsu.moviesapp.common.App
 import com.songjinsu.moviesapp.databinding.MovieListItemBinding
-import com.songjinsu.moviesapp.datamodel.MovieInfo
+import com.songjinsu.moviesapp.ui.datamodel.MovieInfo
 import com.songjinsu.moviesapp.net.HttpRequest
 
 class MovieListAdapter() : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {

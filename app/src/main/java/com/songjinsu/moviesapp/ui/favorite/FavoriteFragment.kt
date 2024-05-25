@@ -1,11 +1,10 @@
-package com.songjinsu.moviesapp.tab3
+package com.songjinsu.moviesapp.ui.favorite
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.songjinsu.moviesapp.R
 import com.songjinsu.moviesapp.databinding.FavoriteFragmentBinding
 
 class FavoriteFragment : Fragment() {

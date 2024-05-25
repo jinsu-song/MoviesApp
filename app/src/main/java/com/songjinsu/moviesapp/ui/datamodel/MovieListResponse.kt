@@ -1,4 +1,4 @@
-package com.songjinsu.moviesapp.datamodel
+package com.songjinsu.moviesapp.ui.datamodel
 
 
 import android.graphics.Bitmap
@@ -22,28 +22,16 @@ open class MovieListResponse {
 data class MovieListResponse1(
     @SerializedName("dates")
     val dates: Dates?,
-//    @SerializedName("page")
-//    val page: Int?,
     @SerializedName("results")
     val results: ArrayList<MovieInfo>?,
-//    @SerializedName("total_pages")
-//    val totalPages: Int?,
-//    @SerializedName("total_results")
-//    val totalResults: Int?
 ) : MovieListResponse()
 
 /**
  * For Type : popular, Top Rated
  */
 data class MovieListResponse2(
-//    @SerializedName("page")
-//    val page: Int?,
     @SerializedName("results")
     val results: ArrayList<MovieInfo>?,
-//    @SerializedName("total_pages")
-//    val totalPages: Int?,
-//    @SerializedName("total_results")
-//    val totalResults: Int?
 ) : MovieListResponse()
 
 data class MovieSearch(

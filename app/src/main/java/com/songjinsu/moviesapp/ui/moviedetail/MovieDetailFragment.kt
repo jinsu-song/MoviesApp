@@ -1,17 +1,16 @@
-package com.songjinsu.moviesapp.movie_detail
+package com.songjinsu.moviesapp.ui.moviedetail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.songjinsu.moviesapp.MainViewModel
+import com.songjinsu.moviesapp.ui.MainViewModel
 import com.songjinsu.moviesapp.common.App
 import com.songjinsu.moviesapp.databinding.MovieDetailFragmentBinding
-import com.songjinsu.moviesapp.datamodel.MovieDetailResponse
-import com.songjinsu.moviesapp.datamodel.MovieVideo
-import com.songjinsu.moviesapp.datamodel.MovieVideos
+import com.songjinsu.moviesapp.ui.datamodel.MovieDetailResponse
+import com.songjinsu.moviesapp.ui.datamodel.MovieVideo
+import com.songjinsu.moviesapp.ui.datamodel.MovieVideos
 
 class MovieDetailFragment(val vm: MainViewModel, val movieId: String) : Fragment() {
     private lateinit var binding: MovieDetailFragmentBinding

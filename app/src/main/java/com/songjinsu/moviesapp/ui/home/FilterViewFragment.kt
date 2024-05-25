@@ -1,4 +1,4 @@
-package com.songjinsu.moviesapp.tab2
+package com.songjinsu.moviesapp.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.songjinsu.moviesapp.MainViewModel
+import com.songjinsu.moviesapp.ui.MainViewModel
 import com.songjinsu.moviesapp.common.MoviesFilterType
 import com.songjinsu.moviesapp.databinding.FilterViewFragmentBinding
 

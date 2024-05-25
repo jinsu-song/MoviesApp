@@ -1,21 +1,20 @@
-package com.songjinsu.moviesapp.tab2
+package com.songjinsu.moviesapp.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.songjinsu.moviesapp.MainViewModel
-import com.songjinsu.moviesapp.adapter.MovieListAdapter
+import com.songjinsu.moviesapp.ui.MainViewModel
+import com.songjinsu.moviesapp.ui.adapter.MovieListAdapter
 import com.songjinsu.moviesapp.databinding.HomeFragmentBinding
-import com.songjinsu.moviesapp.datamodel.MovieInfo
-import com.songjinsu.moviesapp.datamodel.MovieListResponse
-import com.songjinsu.moviesapp.datamodel.MovieListResponse1
-import com.songjinsu.moviesapp.datamodel.MovieListResponse2
-import com.songjinsu.moviesapp.movie_detail.MovieDetailFragment
+import com.songjinsu.moviesapp.ui.datamodel.MovieInfo
+import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse
+import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse1
+import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse2
+import com.songjinsu.moviesapp.ui.moviedetail.MovieDetailFragment
 
 class HomeFragment(val vm: MainViewModel) : Fragment() {
 

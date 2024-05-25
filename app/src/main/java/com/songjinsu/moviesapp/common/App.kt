@@ -6,7 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.widget.Toast
-import com.songjinsu.moviesapp.datamodel.ConfigurationResponse
+import com.songjinsu.moviesapp.ui.datamodel.ConfigurationResponse
 import com.songjinsu.moviesapp.net.API_PATHs
 import com.songjinsu.moviesapp.net.HttpRequest
 

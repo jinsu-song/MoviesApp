@@ -1,4 +1,4 @@
-package com.songjinsu.moviesapp.datamodel
+package com.songjinsu.moviesapp.ui.datamodel
 
 
 import com.google.gson.annotations.SerializedName
@@ -56,6 +56,13 @@ data class MovieDetailResponse(
     val voteAverage: Double?,
     @SerializedName("vote_count")
     val voteCount: Int?
+)
+
+data class Genre(
+    @SerializedName("id")
+    val id: Int?,
+    @SerializedName("name")
+    val name: String?
 )
 
 

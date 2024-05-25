@@ -1,4 +1,4 @@
-package com.songjinsu.moviesapp.datamodel
+package com.songjinsu.moviesapp.ui.datamodel
 
 
 import com.google.gson.annotations.SerializedName
