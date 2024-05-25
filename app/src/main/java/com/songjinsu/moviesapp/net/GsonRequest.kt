@@ -1,6 +1,5 @@
 package com.songjinsu.moviesapp.net
 
-import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.JsonRequest

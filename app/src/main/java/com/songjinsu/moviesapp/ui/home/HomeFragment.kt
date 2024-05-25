@@ -4,19 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.songjinsu.moviesapp.ui.MainViewModel
 import com.songjinsu.moviesapp.ui.adapter.MovieListAdapter
 import com.songjinsu.moviesapp.databinding.HomeFragmentBinding
+import com.songjinsu.moviesapp.ui.BaseFragment
 import com.songjinsu.moviesapp.ui.datamodel.MovieInfo
 import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse
 import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse1
 import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse2
 import com.songjinsu.moviesapp.ui.moviedetail.MovieDetailFragment
 
-class HomeFragment(val vm: MainViewModel) : Fragment() {
+class HomeFragment(val vm: MainViewModel) : BaseFragment() {
 
     private lateinit var binding: HomeFragmentBinding
     private var  movieList : ArrayList<MovieInfo>? = arrayListOf()

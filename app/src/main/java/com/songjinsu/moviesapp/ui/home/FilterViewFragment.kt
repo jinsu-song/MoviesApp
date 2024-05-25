@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import com.songjinsu.moviesapp.ui.MainViewModel
 import com.songjinsu.moviesapp.common.MoviesFilterType
 import com.songjinsu.moviesapp.databinding.FilterViewFragmentBinding
+import com.songjinsu.moviesapp.ui.BaseFragment
 
-class FilterViewFragment(val vm : MainViewModel, val homeViewModel: HomeViewModel) : Fragment() {
+class FilterViewFragment(val vm : MainViewModel, val homeViewModel: HomeViewModel) : BaseFragment() {
     private lateinit var binding: FilterViewFragmentBinding
     override fun onCreateView(
         inflater: LayoutInflater,

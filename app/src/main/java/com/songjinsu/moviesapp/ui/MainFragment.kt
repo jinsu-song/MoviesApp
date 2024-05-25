@@ -12,7 +12,7 @@ import com.songjinsu.moviesapp.ui.search.SearchFragment
 import com.songjinsu.moviesapp.ui.home.HomeFragment
 import com.songjinsu.moviesapp.ui.favorite.FavoriteFragment
 
-class MainFragment(val vm: MainViewModel) : Fragment() {
+class MainFragment(val vm: MainViewModel) : BaseFragment() {
 
 //    lateinit var  movieList : MovieListResponse
     private lateinit var binding : MainFragmentBinding

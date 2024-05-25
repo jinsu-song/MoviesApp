@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.songjinsu.moviesapp.databinding.FavoriteFragmentBinding
+import com.songjinsu.moviesapp.ui.BaseFragment
 
-class FavoriteFragment : Fragment() {
+class FavoriteFragment : BaseFragment() {
     private lateinit var binding: FavoriteFragmentBinding
 
     override fun onCreateView(

@@ -8,11 +8,12 @@ import androidx.fragment.app.Fragment
 import com.songjinsu.moviesapp.ui.MainViewModel
 import com.songjinsu.moviesapp.common.App
 import com.songjinsu.moviesapp.databinding.MovieDetailFragmentBinding
+import com.songjinsu.moviesapp.ui.BaseFragment
 import com.songjinsu.moviesapp.ui.datamodel.MovieDetailResponse
 import com.songjinsu.moviesapp.ui.datamodel.MovieVideo
 import com.songjinsu.moviesapp.ui.datamodel.MovieVideos
 
-class MovieDetailFragment(val vm: MainViewModel, val movieId: String) : Fragment() {
+class MovieDetailFragment(val vm: MainViewModel, val movieId: String) : BaseFragment() {
     private lateinit var binding: MovieDetailFragmentBinding
     private val movieDetailViewModel = MovieDetailViewModel()
     private lateinit var movieDetail : MovieDetailResponse

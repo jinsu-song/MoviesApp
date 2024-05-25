@@ -1,14 +1,13 @@
 package com.songjinsu.moviesapp.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.songjinsu.moviesapp.R
 import com.songjinsu.moviesapp.common.App
 import com.songjinsu.moviesapp.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var mainViewModel : MainViewModel
