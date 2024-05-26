@@ -5,6 +5,7 @@ import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.JsonRequest
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
+import com.songjinsu.moviesapp.BuildConfig
 import java.io.UnsupportedEncodingException
 
 class GsonRequest<T>(
@@ -19,7 +20,7 @@ class GsonRequest<T>(
 
     override fun getHeaders(): MutableMap<String, String> {
         val headers = mapOf(
-            "Authorization" to "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZWI2OWY5NDgxMzJmMzExNTBjYmIxNjllMWFlM2M3ZCIsInN1YiI6IjY2NDZiMTdjMWUwNjdiMzFjMzlhMmQyNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SzH3oNoMGtcSiRs_EZ-SlMu9GvKSYSzB1mV9sIXfeaY",
+            "Authorization" to BuildConfig.API_KEY,
             "accept" to "application/json"
         )
         return headers.toMutableMap()
