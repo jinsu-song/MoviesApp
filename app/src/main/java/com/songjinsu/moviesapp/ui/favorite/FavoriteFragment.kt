@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.songjinsu.moviesapp.databinding.FavoriteFragmentBinding
 import com.songjinsu.moviesapp.ui.BaseFragment
+import com.songjinsu.moviesapp.ui.MainViewModel
 
-class FavoriteFragment : BaseFragment() {
+class FavoriteFragment(vm: MainViewModel) : BaseFragment(vm) {
     private lateinit var binding: FavoriteFragmentBinding
 
     override fun onCreateView(

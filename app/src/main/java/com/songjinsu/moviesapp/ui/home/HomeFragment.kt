@@ -16,7 +16,7 @@ import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse1
 import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse2
 import com.songjinsu.moviesapp.ui.moviedetail.MovieDetailFragment
 
-class HomeFragment(val vm: MainViewModel) : BaseFragment() {
+class HomeFragment(vm: MainViewModel) : BaseFragment(vm) {
 
     private lateinit var binding: HomeFragmentBinding
     private var  movieList : ArrayList<MovieInfo>? = arrayListOf()
@@ -40,28 +40,15 @@ class HomeFragment(val vm: MainViewModel) : BaseFragment() {
     }
 
     fun init() {
-        adapter.context = requireContext()
-        adapter.setOnItemClick { movieInfo ->
-            vm.addFragment(MovieDetailFragment(vm, movieInfo.id.toString()))
-        }
-        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerview.adapter = adapter
-
-        binding.recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            private var isScrolledDown = false
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                if (newState == RecyclerView.SCROLL_STATE_SETTLING && isScrolledDown) {
-                    val page : String = (moviesInfo.page?.plus(1)).toString()
-                    homeViewModel.getMovieList(requireContext(), homeViewModel.getMoviesFilterType(), page)
+        setAdapter(requireContext(), adapter, binding.recyclerview) {
+            val page = (moviesInfo.page?.plus(1))
+            val totalPage = moviesInfo.totalPages
+            if (page != null && totalPage != null) {
+                if (page <= totalPage) {
+                    homeViewModel.getMovieList(requireContext(), homeViewModel.getMoviesFilterType(), page.toString())
                 }
             }
-
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                isScrolledDown = dy > 0;
-            }
-        })
+        }
 
         // 영화 리스트 불러오기
         homeViewModel.getMovieList(requireContext())

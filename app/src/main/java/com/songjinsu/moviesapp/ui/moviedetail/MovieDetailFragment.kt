@@ -12,7 +12,7 @@ import com.songjinsu.moviesapp.ui.datamodel.MovieDetailResponse
 import com.songjinsu.moviesapp.ui.datamodel.MovieVideo
 import com.songjinsu.moviesapp.ui.datamodel.MovieVideos
 
-class MovieDetailFragment(val vm: MainViewModel, val movieId: String) : BaseFragment() {
+class MovieDetailFragment(vm: MainViewModel, val movieId: String) : BaseFragment(vm) {
     private lateinit var binding: MovieDetailFragmentBinding
     private val movieDetailViewModel = MovieDetailViewModel()
     private lateinit var movieDetail : MovieDetailResponse

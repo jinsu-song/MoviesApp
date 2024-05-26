@@ -12,13 +12,13 @@ import com.songjinsu.moviesapp.ui.search.SearchFragment
 import com.songjinsu.moviesapp.ui.home.HomeFragment
 import com.songjinsu.moviesapp.ui.favorite.FavoriteFragment
 
-class MainFragment(vm: MainViewModel) : BaseFragment() {
+class MainFragment(vm: MainViewModel) : BaseFragment(vm) {
 
     private lateinit var binding : MainFragmentBinding
 
     val searchFragment = SearchFragment(vm)
     val homeFragment = HomeFragment(vm)
-    val favoriteFragment = FavoriteFragment()
+    val favoriteFragment = FavoriteFragment(vm)
 
     override fun onCreateView(
         inflater: LayoutInflater,

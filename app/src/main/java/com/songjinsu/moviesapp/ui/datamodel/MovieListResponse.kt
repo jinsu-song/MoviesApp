@@ -7,9 +7,6 @@ import com.google.gson.annotations.SerializedName
 open class MovieListResponse {
     @SerializedName("page")
     val page: Int? = null
-
-
-
     @SerializedName("total_pages")
     val totalPages: Int? = null
     @SerializedName("total_results")

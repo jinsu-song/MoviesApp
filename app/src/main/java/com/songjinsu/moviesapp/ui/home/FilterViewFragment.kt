@@ -10,7 +10,7 @@ import com.songjinsu.moviesapp.common.MoviesFilterType
 import com.songjinsu.moviesapp.databinding.FilterViewFragmentBinding
 import com.songjinsu.moviesapp.ui.BaseFragment
 
-class FilterViewFragment(val vm : MainViewModel, val homeViewModel: HomeViewModel) : BaseFragment() {
+class FilterViewFragment(vm : MainViewModel, val homeViewModel: HomeViewModel) : BaseFragment(vm) {
     private lateinit var binding: FilterViewFragmentBinding
     override fun onCreateView(
         inflater: LayoutInflater,

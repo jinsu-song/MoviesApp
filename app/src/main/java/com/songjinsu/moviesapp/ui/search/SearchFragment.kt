@@ -14,7 +14,7 @@ import com.songjinsu.moviesapp.ui.datamodel.MovieInfo
 import com.songjinsu.moviesapp.ui.datamodel.MovieSearch
 import com.songjinsu.moviesapp.ui.moviedetail.MovieDetailFragment
 
-class SearchFragment(val vm: MainViewModel) : BaseFragment() {
+class SearchFragment(vm: MainViewModel) : BaseFragment(vm) {
 
     private lateinit var binding: SearchFragmentBinding
     private var adapter: MovieListAdapter = MovieListAdapter()
@@ -33,33 +33,15 @@ class SearchFragment(val vm: MainViewModel) : BaseFragment() {
     }
 
     fun init() {
-        adapter.context = requireContext()
-        adapter.setOnItemClick { movieInfo ->
-            vm.addFragment(MovieDetailFragment(vm, movieInfo.id.toString()))
-        }
-        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerview.adapter = adapter
-
-        binding.recyclerview.addOnScrollListener(object: RecyclerView.OnScrollListener() {
-            private var isScrolledDown = false
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                if (newState == RecyclerView.SCROLL_STATE_SETTLING && isScrolledDown) {
-                    val page = searchInfo.page?.plus(1)
-                    val totalPage = searchInfo.totalPages
-                    if (page != null && totalPage != null) {
-                        if (page <= totalPage) {
-                            searchViewModel.getSearchMovies(searchViewModel.movieName, requireContext(), page.toString())
-                        }
-                    }
+        setAdapter(requireContext(), adapter, binding.recyclerview) {
+            val page = searchInfo.page?.plus(1)
+            val totalPage = searchInfo.totalPages
+            if (page != null && totalPage != null) {
+                if (page <= totalPage) {
+                    searchViewModel.getSearchMovies(searchViewModel.movieName, requireContext(), page.toString())
                 }
             }
-
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                isScrolledDown = dy > 0
-            }
-        })
+        }
 
         searchViewModel.searchInfo.observe(viewLifecycleOwner) {
             searchInfo = it
