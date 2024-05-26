@@ -1,4 +1,4 @@
-package com.songjinsu.moviesapp.net
+package com.songjinsu.moviesapp.network
 
 object ApiPaths {
     val BASE_URL : String = "https://api.themoviedb.org/"

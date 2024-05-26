@@ -8,8 +8,8 @@ import com.songjinsu.moviesapp.common.MoviesFilterType
 import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse
 import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse1
 import com.songjinsu.moviesapp.ui.datamodel.MovieListResponse2
-import com.songjinsu.moviesapp.net.HttpRequest
-import com.songjinsu.moviesapp.net.Paths
+import com.songjinsu.moviesapp.network.HttpRequest
+import com.songjinsu.moviesapp.network.Paths
 
 class HomeViewModel : ViewModel() {
     private val call = HttpRequest

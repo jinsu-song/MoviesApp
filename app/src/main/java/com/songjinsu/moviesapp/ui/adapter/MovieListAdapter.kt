@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.songjinsu.moviesapp.R
-import com.songjinsu.moviesapp.common.App
+import com.songjinsu.moviesapp.MovieApplication
 import com.songjinsu.moviesapp.databinding.MovieListItemBinding
 import com.songjinsu.moviesapp.ui.datamodel.MovieInfo
-import com.songjinsu.moviesapp.net.HttpRequest
+import com.songjinsu.moviesapp.network.HttpRequest
 
 class MovieListAdapter() : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
     private val list = arrayListOf<MovieInfo>()
@@ -53,7 +53,7 @@ class MovieListAdapter() : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
         }
 
         if (context != null) {
-            val baseUrl = App.configuration.images?.baseUrl
+            val baseUrl = MovieApplication.configuration.images?.baseUrl
             val url = "${baseUrl}w92${item.posterPath}"
 
             // TODO : 이미지 캐시 구현해야함.

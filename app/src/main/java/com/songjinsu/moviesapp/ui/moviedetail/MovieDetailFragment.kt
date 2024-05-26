@@ -4,9 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.songjinsu.moviesapp.ui.MainViewModel
-import com.songjinsu.moviesapp.common.App
+import com.songjinsu.moviesapp.MovieApplication
 import com.songjinsu.moviesapp.databinding.MovieDetailFragmentBinding
 import com.songjinsu.moviesapp.ui.BaseFragment
 import com.songjinsu.moviesapp.ui.datamodel.MovieDetailResponse
@@ -84,7 +83,7 @@ class MovieDetailFragment(val vm: MainViewModel, val movieId: String) : BaseFrag
 
         binding.goTrailer.setOnClickListener {
             if (movieVideo != null) {
-                App.openYoutube(movieId, requireContext())
+                MovieApplication.openYoutube(movieId, requireContext())
             }
         }
     }

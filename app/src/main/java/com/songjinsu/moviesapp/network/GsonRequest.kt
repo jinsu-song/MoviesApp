@@ -1,4 +1,4 @@
-package com.songjinsu.moviesapp.net
+package com.songjinsu.moviesapp.network
 
 import com.android.volley.Response
 import com.android.volley.toolbox.HttpHeaderParser

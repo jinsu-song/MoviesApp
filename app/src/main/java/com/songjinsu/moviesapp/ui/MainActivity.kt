@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.songjinsu.moviesapp.R
-import com.songjinsu.moviesapp.common.App
+import com.songjinsu.moviesapp.MovieApplication
 import com.songjinsu.moviesapp.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity() {
@@ -26,7 +26,7 @@ class MainActivity : BaseActivity() {
 
         mainFragment = MainFragment(mainViewModel)
 
-        App.getConfiguration(this) {
+        MovieApplication.getConfiguration(this) {
             ft.replace(R.id.fragment_container_view, mainFragment).commit()
         }
 

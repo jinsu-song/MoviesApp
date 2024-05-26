@@ -6,11 +6,11 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.songjinsu.moviesapp.common.App
+import com.songjinsu.moviesapp.MovieApplication
 import com.songjinsu.moviesapp.ui.datamodel.MovieDetailResponse
 import com.songjinsu.moviesapp.ui.datamodel.MovieVideos
-import com.songjinsu.moviesapp.net.HttpRequest
-import com.songjinsu.moviesapp.net.Paths
+import com.songjinsu.moviesapp.network.HttpRequest
+import com.songjinsu.moviesapp.network.Paths
 
 class MovieDetailViewModel : ViewModel() {
 
@@ -42,7 +42,7 @@ class MovieDetailViewModel : ViewModel() {
 
     // poster 이미지 불러오기
     fun loadPoster(imageName: String, context: Context) {
-        val baseUrl = App.configuration.images?.baseUrl
+        val baseUrl = MovieApplication.configuration.images?.baseUrl
         val url = "${baseUrl}w500${imageName}"
         if (baseUrl != null) {
 
@@ -65,7 +65,7 @@ class MovieDetailViewModel : ViewModel() {
     // 영화에 대한 예고편 불러오기
     fun getMovieVideos(movieId: String, context: Context) {
         val methodName = "getMovieVideos"
-        val baseUrl = App.configuration.images?.baseUrl
+        val baseUrl = MovieApplication.configuration.images?.baseUrl
         val url = Paths.makeFullUrl(Paths.movieVideos(movieId))
         if (baseUrl != null) {
             call.requestGet(

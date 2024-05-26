@@ -1,4 +1,4 @@
-package com.songjinsu.moviesapp.common
+package com.songjinsu.moviesapp
 
 import android.app.Application
 import android.content.Context
@@ -6,11 +6,12 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.widget.Toast
+import com.songjinsu.moviesapp.common.StaticParameter
 import com.songjinsu.moviesapp.ui.datamodel.ConfigurationResponse
-import com.songjinsu.moviesapp.net.ApiPaths
-import com.songjinsu.moviesapp.net.HttpRequest
+import com.songjinsu.moviesapp.network.ApiPaths
+import com.songjinsu.moviesapp.network.HttpRequest
 
-object App : Application() {
+object MovieApplication : Application() {
 
     lateinit var configuration: ConfigurationResponse
     val call = HttpRequest
@@ -43,11 +44,19 @@ object App : Application() {
         val appInstalledCheckIntent = packageManager.getLaunchIntentForPackage(StaticParameter.YOUTUBE_PACKAGE_NAME)
 
         if (appInstalledCheckIntent == null) {
-            val appOpenIntent : Intent = Intent(Intent.ACTION_VIEW, Uri.parse(StaticParameter.getYouTubeUri(videoId)))
+            val appOpenIntent : Intent = Intent(Intent.ACTION_VIEW, Uri.parse(
+                StaticParameter.getYouTubeUri(
+                    videoId
+                )
+            ))
             context.startActivity(appOpenIntent)
         } else {
 
-            val browserIntent : Intent = Intent(Intent.ACTION_VIEW, Uri.parse(StaticParameter.getYouTubeSiteUrl(videoId)))
+            val browserIntent : Intent = Intent(Intent.ACTION_VIEW, Uri.parse(
+                StaticParameter.getYouTubeSiteUrl(
+                    videoId
+                )
+            ))
             context.startActivity(browserIntent)
         }
     }
