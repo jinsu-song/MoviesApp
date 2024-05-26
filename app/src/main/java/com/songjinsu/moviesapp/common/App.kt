@@ -7,7 +7,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.widget.Toast
 import com.songjinsu.moviesapp.ui.datamodel.ConfigurationResponse
-import com.songjinsu.moviesapp.net.API_PATHs
+import com.songjinsu.moviesapp.net.ApiPaths
 import com.songjinsu.moviesapp.net.HttpRequest
 
 object App : Application() {
@@ -21,7 +21,7 @@ object App : Application() {
     fun getConfiguration(context: Context, success: () -> Unit) {
         val methodName : String = "getConfiguration()"
         call.requestGet(
-            API_PATHs.makeFullUrl(API_PATHs.CONFIGURATION),
+            ApiPaths.makeFullUrl(ApiPaths.CONFIGURATION),
             ConfigurationResponse::class.java,
             context,
             { response ->
@@ -43,11 +43,11 @@ object App : Application() {
         val appInstalledCheckIntent = packageManager.getLaunchIntentForPackage(StaticParameter.YOUTUBE_PACKAGE_NAME)
 
         if (appInstalledCheckIntent == null) {
-            val appOpenIntent : Intent = Intent(Intent.ACTION_VIEW, Uri.parse(StaticParameter.YOUTUBE_APP_URI(videoId)))
+            val appOpenIntent : Intent = Intent(Intent.ACTION_VIEW, Uri.parse(StaticParameter.getYouTubeUri(videoId)))
             context.startActivity(appOpenIntent)
         } else {
 
-            val browserIntent : Intent = Intent(Intent.ACTION_VIEW, Uri.parse(StaticParameter.YOUTUBE_SITE_URL(videoId)))
+            val browserIntent : Intent = Intent(Intent.ACTION_VIEW, Uri.parse(StaticParameter.getYouTubeSiteUrl(videoId)))
             context.startActivity(browserIntent)
         }
     }

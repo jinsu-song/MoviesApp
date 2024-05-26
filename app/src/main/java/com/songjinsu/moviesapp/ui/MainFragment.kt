@@ -12,9 +12,8 @@ import com.songjinsu.moviesapp.ui.search.SearchFragment
 import com.songjinsu.moviesapp.ui.home.HomeFragment
 import com.songjinsu.moviesapp.ui.favorite.FavoriteFragment
 
-class MainFragment(val vm: MainViewModel) : BaseFragment() {
+class MainFragment(vm: MainViewModel) : BaseFragment() {
 
-//    lateinit var  movieList : MovieListResponse
     private lateinit var binding : MainFragmentBinding
 
     val searchFragment = SearchFragment(vm)

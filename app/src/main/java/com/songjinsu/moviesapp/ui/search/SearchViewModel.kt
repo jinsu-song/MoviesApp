@@ -15,7 +15,7 @@ class SearchViewModel : ViewModel() {
 
     fun getSearchMovies(movieName: String, context: Context, page: String = "1") {
         val methodName = "getSearchMovies"
-        val url = Paths.makeFullUrl(Paths.SEARCH_MOVIE(movieName = movieName, page = page))
+        val url = Paths.makeFullUrl(Paths.searchMovie(movieName = movieName, page = page))
 
         call.requestGet(
             url,

@@ -22,7 +22,7 @@ class MovieDetailViewModel : ViewModel() {
     // 영화 정보 불러오기
     fun getMovieDetail(movieId: String, context: Context) {
         val methodName = "getMovieDetail"
-        val url = Paths.makeFullUrl(Paths.MOVIE_DETAIL(movieId))
+        val url = Paths.makeFullUrl(Paths.movieDetail(movieId))
 
         call.requestGet(
             url,
@@ -66,7 +66,7 @@ class MovieDetailViewModel : ViewModel() {
     fun getMovieVideos(movieId: String, context: Context) {
         val methodName = "getMovieVideos"
         val baseUrl = App.configuration.images?.baseUrl
-        val url = Paths.makeFullUrl(Paths.MOVIE_VIDEOS(movieId))
+        val url = Paths.makeFullUrl(Paths.movieVideos(movieId))
         if (baseUrl != null) {
             call.requestGet(
                 url,

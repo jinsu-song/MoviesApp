@@ -21,7 +21,7 @@ class HomeViewModel : ViewModel() {
     fun getMovieList(context: Context, moviesFilterType: MoviesFilterType = MoviesFilterType.POPULAR, page: String = "1") {
         val methodName = "getMovieList()"
         this.moviesFilterType = moviesFilterType
-        val url = Paths.makeFullUrl(Paths.MOVIE_LIST(moviesFilterType.toString(), page))
+        val url = Paths.makeFullUrl(Paths.movieList(moviesFilterType.toString(), page))
 
         call.requestGet(
             url,
