@@ -121,7 +121,7 @@ class MovieDetailFragment(vm: MainViewModel, val movieId: String) : BaseFragment
         }
 
         binding.goTrailer.setOnClickListener {
-            if (movieVideo != null) {
+            if (this::movieVideo.isInitialized) {
                 MovieApplication.openYoutube(movieId, requireContext())
             }
         }

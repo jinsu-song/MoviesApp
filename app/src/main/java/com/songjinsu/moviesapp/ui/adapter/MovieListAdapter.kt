@@ -52,7 +52,8 @@ class MovieListAdapter() : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
             clickListener(item)
         }
 
-        if (context != null) {
+
+        if (this::context.isInitialized) {
             val baseUrl = MovieApplication.configuration.images?.baseUrl
             val url = "${baseUrl}w92${item.posterPath}"
 
