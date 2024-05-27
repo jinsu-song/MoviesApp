@@ -11,8 +11,9 @@ import com.songjinsu.moviesapp.ui.datamodel.MovieDetailResponse
 import com.songjinsu.moviesapp.ui.datamodel.MovieVideos
 import com.songjinsu.moviesapp.data.network.HttpRequest
 import com.songjinsu.moviesapp.data.network.Paths
+import com.songjinsu.moviesapp.ui.MainViewModel
 
-class MovieDetailViewModel : ViewModel() {
+class MovieDetailViewModel(private val vm: MainViewModel) : ViewModel() {
 
     private val call = HttpRequest
     val movieDetailLiveData = MutableLiveData<MovieDetailResponse>()
@@ -42,7 +43,7 @@ class MovieDetailViewModel : ViewModel() {
 
     // poster 이미지 불러오기
     fun loadPoster(imageName: String, context: Context) {
-        val baseUrl = MovieApplication.configuration.images?.baseUrl
+        val baseUrl = vm.configuration.images?.baseUrl
         val url = "${baseUrl}w500${imageName}"
         if (baseUrl != null) {
 
@@ -65,7 +66,7 @@ class MovieDetailViewModel : ViewModel() {
     // 영화에 대한 예고편 불러오기
     fun getMovieVideos(movieId: String, context: Context) {
         val methodName = "getMovieVideos"
-        val baseUrl = MovieApplication.configuration.images?.baseUrl
+        val baseUrl = vm.configuration.images?.baseUrl
         val url = Paths.makeFullUrl(Paths.movieVideos(movieId))
         if (baseUrl != null) {
             call.requestGet(

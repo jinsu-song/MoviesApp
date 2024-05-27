@@ -26,7 +26,7 @@ class MainActivity : BaseActivity() {
 
         mainFragment = MainFragment(mainViewModel)
 
-        MovieApplication.getConfiguration(this) {
+        mainViewModel.getConfiguration(this) {
             ft.replace(R.id.fragment_container_view, mainFragment).commit()
         }
 

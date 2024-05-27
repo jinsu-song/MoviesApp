@@ -12,8 +12,9 @@ import com.songjinsu.moviesapp.MovieApplication
 import com.songjinsu.moviesapp.databinding.MovieListItemBinding
 import com.songjinsu.moviesapp.ui.datamodel.MovieInfo
 import com.songjinsu.moviesapp.data.network.HttpRequest
+import com.songjinsu.moviesapp.ui.MainViewModel
 
-class MovieListAdapter() : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
+class MovieListAdapter(private val vm: MainViewModel) : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
     private val list = arrayListOf<MovieInfo>()
     private var clickListener: (MovieInfo) -> Unit = {}
     lateinit var context: Context
@@ -54,10 +55,9 @@ class MovieListAdapter() : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
 
 
         if (this::context.isInitialized) {
-            val baseUrl = MovieApplication.configuration.images?.baseUrl
+            val baseUrl = vm.configuration.images?.baseUrl
             val url = "${baseUrl}w92${item.posterPath}"
 
-            // TODO : 이미지 캐시 구현해야함.
             if (list[position].image != null) {
                 holder.binding.ivPoster.setImageBitmap(list[position].image)
             } else {

@@ -18,9 +18,9 @@ import com.songjinsu.moviesapp.ui.datamodel.MovieVideos
 import com.songjinsu.moviesapp.ui.favorite.FavoriteViewModel
 import kotlinx.coroutines.launch
 
-class MovieDetailFragment(vm: MainViewModel, val movieId: String) : BaseFragment(vm) {
+class MovieDetailFragment(vm: MainViewModel, private val movieId: String) : BaseFragment(vm) {
     private lateinit var binding: MovieDetailFragmentBinding
-    private val movieDetailViewModel = MovieDetailViewModel()
+    private val movieDetailViewModel = MovieDetailViewModel(vm)
     var favoriteViewModel : FavoriteViewModel? = null
     private lateinit var movieDetail : MovieDetailResponse
     private lateinit var movieVideos: MovieVideos
@@ -122,7 +122,7 @@ class MovieDetailFragment(vm: MainViewModel, val movieId: String) : BaseFragment
 
         binding.goTrailer.setOnClickListener {
             if (this::movieVideo.isInitialized) {
-                MovieApplication.openYoutube(movieId, requireContext())
+                vm.openYouTube(movieId, requireContext())
             }
         }
 

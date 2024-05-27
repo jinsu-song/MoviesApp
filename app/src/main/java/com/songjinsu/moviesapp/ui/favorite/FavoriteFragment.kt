@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class FavoriteFragment(vm: MainViewModel) : BaseFragment(vm) {
     private lateinit var binding: FavoriteFragmentBinding
-    private var adapter : MovieListAdapter = MovieListAdapter()
+    private var adapter : MovieListAdapter = MovieListAdapter(vm)
     private val favoriteViewModel by lazy {
         FavoriteViewModel(requireContext())
     }

@@ -18,7 +18,7 @@ class HomeFragment(vm: MainViewModel) : BaseFragment(vm) {
     private lateinit var binding: HomeFragmentBinding
     private var  movieList : ArrayList<MovieInfo>? = arrayListOf()
     private lateinit var moviesInfo : MovieListResponse
-    private var adapter : MovieListAdapter = MovieListAdapter()
+    private var adapter : MovieListAdapter = MovieListAdapter(vm)
     private val homeViewModel = HomeViewModel()
     private val filterViewFragment by lazy {
         FilterViewFragment(vm, homeViewModel)

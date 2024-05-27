@@ -14,7 +14,7 @@ import com.songjinsu.moviesapp.ui.datamodel.MovieSearch
 class SearchFragment(vm: MainViewModel) : BaseFragment(vm) {
 
     private lateinit var binding: SearchFragmentBinding
-    private var adapter: MovieListAdapter = MovieListAdapter()
+    private var adapter: MovieListAdapter = MovieListAdapter(vm)
     private var searchViewModel = SearchViewModel()
     private lateinit var searchInfo  : MovieSearch
 
