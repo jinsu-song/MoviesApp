@@ -80,11 +80,8 @@ dependencies {
     // ROOM Database 사용
     val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
-//    annotationProcessor("androidx.room:room-compiler:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
-    // 뷰라이프 사이클 사용
-//    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
 }
