@@ -16,9 +16,9 @@ class MainFragment(vm: MainViewModel) : BaseFragment(vm) {
 
     private lateinit var binding : MainFragmentBinding
 
-    val searchFragment = SearchFragment(vm)
-    val homeFragment = HomeFragment(vm)
-    val favoriteFragment = FavoriteFragment(vm)
+    private val searchFragment = SearchFragment(vm)
+    private val homeFragment = HomeFragment(vm)
+    private val favoriteFragment = FavoriteFragment(vm)
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -43,7 +43,7 @@ class MovieDetailFragment(vm: MainViewModel, val movieId: String) : BaseFragment
         return binding.root
     }
 
-    fun init() {
+    private fun init() {
 
         if (favoriteViewModel == null) {
             favoriteViewModel = FavoriteViewModel(requireContext())
@@ -65,7 +65,7 @@ class MovieDetailFragment(vm: MainViewModel, val movieId: String) : BaseFragment
         setObserver()
     }
 
-    fun setObserver() {
+    private fun setObserver() {
         movieDetailViewModel.movieDetailLiveData.observe(viewLifecycleOwner) {
             movieDetail = it
 
@@ -115,7 +115,7 @@ class MovieDetailFragment(vm: MainViewModel, val movieId: String) : BaseFragment
         }
     }
 
-    fun clickEvent() {
+    private fun clickEvent() {
         binding.btnGoBack.setOnClickListener {
             vm.popFragment()
         }

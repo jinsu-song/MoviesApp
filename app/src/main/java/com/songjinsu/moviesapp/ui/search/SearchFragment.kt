@@ -29,7 +29,7 @@ class SearchFragment(vm: MainViewModel) : BaseFragment(vm) {
         return binding.root
     }
 
-    fun init() {
+    private fun init() {
         setAdapter(requireContext(), adapter, binding.recyclerview) {
             val page = searchInfo.page?.plus(1)
             val totalPage = searchInfo.totalPages

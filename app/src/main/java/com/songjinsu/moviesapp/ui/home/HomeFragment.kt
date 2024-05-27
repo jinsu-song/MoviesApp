@@ -36,7 +36,7 @@ class HomeFragment(vm: MainViewModel) : BaseFragment(vm) {
         return binding.root
     }
 
-    fun init() {
+    private fun init() {
         setAdapter(requireContext(), adapter, binding.recyclerview) {
             val page = (moviesInfo.page?.plus(1))
             val totalPage = moviesInfo.totalPages

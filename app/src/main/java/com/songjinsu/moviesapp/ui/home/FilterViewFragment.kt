@@ -24,7 +24,7 @@ class FilterViewFragment(vm : MainViewModel, val homeViewModel: HomeViewModel) :
         return binding.root
     }
 
-    fun init() {
+    private fun init() {
 
         // 인기순
         binding.btnFilterPopular.setOnClickListener {

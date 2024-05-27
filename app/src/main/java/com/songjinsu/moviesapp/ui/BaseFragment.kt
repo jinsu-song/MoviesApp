@@ -10,7 +10,7 @@ import com.songjinsu.moviesapp.ui.moviedetail.MovieDetailFragment
 open class BaseFragment(val vm: MainViewModel) : Fragment() {
 
 
-    fun setAdapter(context: Context, adapter: MovieListAdapter, recyclerView: RecyclerView, callback: () -> Unit) {
+    protected fun setAdapter(context: Context, adapter: MovieListAdapter, recyclerView: RecyclerView, callback: () -> Unit) {
 
         adapter.context = context
         adapter.setOnItemClick { movieInfo ->
