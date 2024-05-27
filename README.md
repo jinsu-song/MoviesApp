@@ -20,4 +20,6 @@ API_KEY="Bearer eyJhbGciOiJIUzI1N~~~~" 이렇게 기입해 주시길 바랍니�
 5. README.md 파일 생성
 6. HomeFragment와 SearchFragment의 중복코드 BaseFragment로 공통화 작업
 7. 즐겨찾기 화면 구현 with Room db Library
+8. 각 클래스의 멤버 접근제어자 정리
+9. Application 클래스의 메서드 MainViewModel로 옮김
   
