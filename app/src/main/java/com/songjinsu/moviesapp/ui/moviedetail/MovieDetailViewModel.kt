@@ -6,7 +6,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.songjinsu.moviesapp.MovieApplication
 import com.songjinsu.moviesapp.ui.datamodel.MovieDetailResponse
 import com.songjinsu.moviesapp.ui.datamodel.MovieVideos
 import com.songjinsu.moviesapp.data.network.HttpRequest

@@ -3,9 +3,7 @@ package com.songjinsu.moviesapp.data.db.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.songjinsu.moviesapp.common.extension.toFormattedString
 import com.songjinsu.moviesapp.ui.datamodel.MovieInfo
-import java.util.Date
 
 @Entity(tableName = "favorite_movie_table")
 data class FavoriteMovie(

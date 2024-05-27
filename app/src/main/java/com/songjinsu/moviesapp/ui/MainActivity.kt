@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.songjinsu.moviesapp.R
-import com.songjinsu.moviesapp.MovieApplication
 import com.songjinsu.moviesapp.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity() {

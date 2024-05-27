@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.songjinsu.moviesapp.ui.MainViewModel
-import com.songjinsu.moviesapp.MovieApplication
 import com.songjinsu.moviesapp.R
 import com.songjinsu.moviesapp.data.db.entities.FavoriteMovie
 import com.songjinsu.moviesapp.databinding.MovieDetailFragmentBinding

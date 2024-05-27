@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModel
-import com.songjinsu.moviesapp.MovieApplication
 import com.songjinsu.moviesapp.R
 import com.songjinsu.moviesapp.common.StaticParameter
 import com.songjinsu.moviesapp.data.network.ApiPaths

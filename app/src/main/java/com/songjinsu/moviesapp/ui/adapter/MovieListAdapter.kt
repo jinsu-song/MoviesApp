@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.songjinsu.moviesapp.R
-import com.songjinsu.moviesapp.MovieApplication
 import com.songjinsu.moviesapp.databinding.MovieListItemBinding
 import com.songjinsu.moviesapp.ui.datamodel.MovieInfo
 import com.songjinsu.moviesapp.data.network.HttpRequest
