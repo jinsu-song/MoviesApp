@@ -5,8 +5,8 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.songjinsu.moviesapp.ui.datamodel.MovieSearch
-import com.songjinsu.moviesapp.network.HttpRequest
-import com.songjinsu.moviesapp.network.Paths
+import com.songjinsu.moviesapp.data.network.HttpRequest
+import com.songjinsu.moviesapp.data.network.Paths
 
 class SearchViewModel : ViewModel() {
     private val call = HttpRequest

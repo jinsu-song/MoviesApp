@@ -4,15 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.songjinsu.moviesapp.ui.MainViewModel
 import com.songjinsu.moviesapp.ui.adapter.MovieListAdapter
 import com.songjinsu.moviesapp.databinding.SearchFragmentBinding
 import com.songjinsu.moviesapp.ui.BaseFragment
 import com.songjinsu.moviesapp.ui.datamodel.MovieInfo
 import com.songjinsu.moviesapp.ui.datamodel.MovieSearch
-import com.songjinsu.moviesapp.ui.moviedetail.MovieDetailFragment
 
 class SearchFragment(vm: MainViewModel) : BaseFragment(vm) {
 

@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModel
 import com.songjinsu.moviesapp.MovieApplication
 import com.songjinsu.moviesapp.ui.datamodel.MovieDetailResponse
 import com.songjinsu.moviesapp.ui.datamodel.MovieVideos
-import com.songjinsu.moviesapp.network.HttpRequest
-import com.songjinsu.moviesapp.network.Paths
+import com.songjinsu.moviesapp.data.network.HttpRequest
+import com.songjinsu.moviesapp.data.network.Paths
 
 class MovieDetailViewModel : ViewModel() {
 

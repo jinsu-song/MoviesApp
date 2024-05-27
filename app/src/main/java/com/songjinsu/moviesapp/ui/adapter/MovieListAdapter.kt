@@ -11,7 +11,7 @@ import com.songjinsu.moviesapp.R
 import com.songjinsu.moviesapp.MovieApplication
 import com.songjinsu.moviesapp.databinding.MovieListItemBinding
 import com.songjinsu.moviesapp.ui.datamodel.MovieInfo
-import com.songjinsu.moviesapp.network.HttpRequest
+import com.songjinsu.moviesapp.data.network.HttpRequest
 
 class MovieListAdapter() : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
     private val list = arrayListOf<MovieInfo>()

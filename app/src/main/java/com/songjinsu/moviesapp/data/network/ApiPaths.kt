@@ -1,4 +1,4 @@
-package com.songjinsu.moviesapp.network
+package com.songjinsu.moviesapp.data.network
 
 object ApiPaths {
     val BASE_URL : String = "https://api.themoviedb.org/"
@@ -32,7 +32,7 @@ object ApiPaths {
      */
     fun movieVideos(movieId: String) : String = "3/movie/${movieId}/videos"
 
-    fun makeFullUrl(endpoint: String) : String = "${BASE_URL}${endpoint}"
+    fun makeFullUrl(endpoint: String) : String = "$BASE_URL${endpoint}"
 
 }
 

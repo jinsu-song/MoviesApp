@@ -8,8 +8,8 @@ import android.net.Uri
 import android.widget.Toast
 import com.songjinsu.moviesapp.common.StaticParameter
 import com.songjinsu.moviesapp.ui.datamodel.ConfigurationResponse
-import com.songjinsu.moviesapp.network.ApiPaths
-import com.songjinsu.moviesapp.network.HttpRequest
+import com.songjinsu.moviesapp.data.network.ApiPaths
+import com.songjinsu.moviesapp.data.network.HttpRequest
 
 object MovieApplication : Application() {
 

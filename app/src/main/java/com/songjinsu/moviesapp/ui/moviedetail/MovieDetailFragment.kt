@@ -4,20 +4,29 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.songjinsu.moviesapp.ui.MainViewModel
 import com.songjinsu.moviesapp.MovieApplication
+import com.songjinsu.moviesapp.R
+import com.songjinsu.moviesapp.data.db.entities.FavoriteMovie
 import com.songjinsu.moviesapp.databinding.MovieDetailFragmentBinding
 import com.songjinsu.moviesapp.ui.BaseFragment
 import com.songjinsu.moviesapp.ui.datamodel.MovieDetailResponse
 import com.songjinsu.moviesapp.ui.datamodel.MovieVideo
 import com.songjinsu.moviesapp.ui.datamodel.MovieVideos
+import com.songjinsu.moviesapp.ui.favorite.FavoriteViewModel
+import kotlinx.coroutines.launch
 
 class MovieDetailFragment(vm: MainViewModel, val movieId: String) : BaseFragment(vm) {
     private lateinit var binding: MovieDetailFragmentBinding
     private val movieDetailViewModel = MovieDetailViewModel()
+    var favoriteViewModel : FavoriteViewModel? = null
     private lateinit var movieDetail : MovieDetailResponse
     private lateinit var movieVideos: MovieVideos
     private lateinit var movieVideo: MovieVideo
+    private var favoriteMovie: FavoriteMovie? = null
+    private var isAddedFavoriteMovie : Boolean = false
 
     private val VIDEOS_TYPE : String = "Trailer"
     private val SITE : String = "YouTube"
@@ -36,11 +45,20 @@ class MovieDetailFragment(vm: MainViewModel, val movieId: String) : BaseFragment
 
     fun init() {
 
+        if (favoriteViewModel == null) {
+            favoriteViewModel = FavoriteViewModel(requireContext())
+        }
+
         // 영화 상세 정보
         movieDetailViewModel.getMovieDetail(movieId, requireContext())
 
         // 영화 트레일러 정보
         movieDetailViewModel.getMovieVideos(movieId, requireContext())
+
+        // 즐겨찾기 추가 여부
+        lifecycleScope.launch {
+            favoriteViewModel?.isExistFavoriteMovie(movieId)
+        }
 
         clickEvent()
 
@@ -74,6 +92,27 @@ class MovieDetailFragment(vm: MainViewModel, val movieId: String) : BaseFragment
                 }
             }
         }
+
+        favoriteViewModel?.movieLiveData?.observe(viewLifecycleOwner) { movie ->
+            favoriteMovie = movie
+            if (movie != null) {
+                isAddedFavoriteMovie = true
+                favoriteViewModel?.favoriteButtonClickLiveData?.postValue(true)
+            } else {
+                isAddedFavoriteMovie = false
+                favoriteViewModel?.favoriteButtonClickLiveData?.postValue(false)
+            }
+        }
+
+        favoriteViewModel?.favoriteButtonClickLiveData?.observe(viewLifecycleOwner) { isExistMovie ->
+            if (isExistMovie) {
+                binding.btnFavoriteMovie.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.gray))
+                binding.btnFavoriteMovie.text = "즐겨찾기 해제"
+            } else {
+                binding.btnFavoriteMovie.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
+                binding.btnFavoriteMovie.text = "즐겨찾기 추가"
+            }
+        }
     }
 
     fun clickEvent() {
@@ -85,6 +124,27 @@ class MovieDetailFragment(vm: MainViewModel, val movieId: String) : BaseFragment
             if (movieVideo != null) {
                 MovieApplication.openYoutube(movieId, requireContext())
             }
+        }
+
+        binding.btnFavoriteMovie.setOnClickListener {
+            if (isAddedFavoriteMovie) {
+                // 즐겨찾기 해제하기
+                lifecycleScope.launch {
+                    favoriteViewModel?.deleteFavoriteMovie(favoriteMovie!!)
+                    isAddedFavoriteMovie = false
+                }
+
+            } else {
+                // 즐겨찾기 추가하기
+                lifecycleScope.launch {
+                    favoriteViewModel?.insertFavoriteMovie(movieDetail.convertToFavoriteMovie(), requireContext())
+                    isAddedFavoriteMovie = true
+                }
+            }
+            lifecycleScope.launch {
+                favoriteViewModel?.getFavoriteMovies()
+            }
+
         }
     }
 }

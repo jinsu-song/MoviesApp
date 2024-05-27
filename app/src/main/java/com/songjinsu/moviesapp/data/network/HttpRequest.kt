@@ -1,4 +1,4 @@
-package com.songjinsu.moviesapp.network
+package com.songjinsu.moviesapp.data.network
 
 import android.content.Context
 import android.graphics.Bitmap

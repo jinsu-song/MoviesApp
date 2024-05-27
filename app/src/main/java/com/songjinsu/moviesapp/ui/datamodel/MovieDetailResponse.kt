@@ -2,6 +2,9 @@ package com.songjinsu.moviesapp.ui.datamodel
 
 
 import com.google.gson.annotations.SerializedName
+import com.songjinsu.moviesapp.common.extension.toFormattedString
+import com.songjinsu.moviesapp.data.db.entities.FavoriteMovie
+import java.util.Date
 
 data class MovieDetailResponse(
     @SerializedName("adult")
@@ -56,7 +59,18 @@ data class MovieDetailResponse(
     val voteAverage: Double?,
     @SerializedName("vote_count")
     val voteCount: Int?
-)
+) {
+    fun convertToFavoriteMovie() : FavoriteMovie {
+        return FavoriteMovie(
+            movieId = id.toString(),
+            title = title?:"",
+            voteAverage = voteAverage?:0.0,
+            releaseDate = releaseDate?:"0000-00-00",
+            posterPath = posterPath?:"",
+            createDate = Date().toFormattedString()
+        )
+    }
+}
 
 data class Genre(
     @SerializedName("id")
