@@ -44,9 +44,9 @@ class FavoriteFragment(vm: MainViewModel) : BaseFragment(vm) {
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerview.adapter = adapter
 
-        lifecycleScope.launch {
-            favoriteViewModel.getFavoriteMovies()
-        }
+
+        favoriteViewModel.getFavoriteMovies()
+
 
         setObserver()
     }

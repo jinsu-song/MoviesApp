@@ -5,9 +5,11 @@ import android.database.sqlite.SQLiteConstraintException
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.songjinsu.moviesapp.data.db.AppDatabase
 import com.songjinsu.moviesapp.data.db.entities.FavoriteMovie
 import com.songjinsu.moviesapp.data.repository.FavoriteMovieRepository
+import kotlinx.coroutines.launch
 
 class FavoriteViewModel(context: Context) : ViewModel() {
     private val favoriteMovieRepository: FavoriteMovieRepository
@@ -38,25 +40,31 @@ class FavoriteViewModel(context: Context) : ViewModel() {
         }
     }
 
-    suspend fun deleteFavoriteMovie(movie: FavoriteMovie)  {
-        val deleteCount : Int = favoriteMovieRepository.delete(movie.movieId)
-        if (deleteCount > 0) {
-            favoriteButtonClickLiveData.postValue(false)
+    fun deleteFavoriteMovie(movie: FavoriteMovie)  {
+        viewModelScope.launch {
+            val deleteCount : Int = favoriteMovieRepository.delete(movie.movieId)
+            if (deleteCount > 0) {
+                favoriteButtonClickLiveData.postValue(false)
+            }
         }
     }
 
-    suspend fun getFavoriteMovies() {
-        val movieList = favoriteMovieRepository.getFavoriteMovies()
+    fun getFavoriteMovies() {
+        viewModelScope.launch {
+            val movieList = favoriteMovieRepository.getFavoriteMovies()
 
-        if (movieList.size > 0) {
-            favoriteMovieListLiveData.postValue(movieList as ArrayList<FavoriteMovie>?)
-        } else {
-            favoriteMovieListLiveData.postValue(ArrayList<FavoriteMovie>())
+            if (movieList.size > 0) {
+                favoriteMovieListLiveData.postValue(movieList as ArrayList<FavoriteMovie>?)
+            } else {
+                favoriteMovieListLiveData.postValue(ArrayList<FavoriteMovie>())
+            }
         }
     }
 
-    suspend fun isExistFavoriteMovie(movieId : String) {
-        val movie = favoriteMovieRepository.isExistFavoriteMovie(movieId)
-        movieLiveData.postValue(movie)
+    fun isExistFavoriteMovie(movieId : String) {
+        viewModelScope.launch {
+            val movie = favoriteMovieRepository.isExistFavoriteMovie(movieId)
+            movieLiveData.postValue(movie)
+        }
     }
 }

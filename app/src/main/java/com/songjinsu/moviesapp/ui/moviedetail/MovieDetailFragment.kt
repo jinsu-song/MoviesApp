@@ -128,10 +128,10 @@ class MovieDetailFragment(vm: MainViewModel, private val movieId: String) : Base
         binding.btnFavoriteMovie.setOnClickListener {
             if (isAddedFavoriteMovie) {
                 // 즐겨찾기 해제하기
-                lifecycleScope.launch {
-                    favoriteViewModel?.deleteFavoriteMovie(favoriteMovie!!)
-                    isAddedFavoriteMovie = false
-                }
+
+                favoriteViewModel?.deleteFavoriteMovie(favoriteMovie!!)
+                isAddedFavoriteMovie = false
+
 
             } else {
                 // 즐겨찾기 추가하기
@@ -140,9 +140,8 @@ class MovieDetailFragment(vm: MainViewModel, private val movieId: String) : Base
                     isAddedFavoriteMovie = true
                 }
             }
-            lifecycleScope.launch {
-                favoriteViewModel?.getFavoriteMovies()
-            }
+
+            favoriteViewModel?.getFavoriteMovies()
 
         }
     }
